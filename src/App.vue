@@ -1,21 +1,22 @@
 <script setup>
+import { ref } from "vue";
 import Order from "./components/Order.vue";
 import OrderEdit from "./components/OrderEdit.vue";
+import SAMPLE_DATA from "./assets/json/sample.json";
+
+let orderList = ref(SAMPLE_DATA);
+
+function initialDataGet() {
+  return SAMPLE_DATA;
+}
 </script>
 
 <template>
   <main>
     <h1 class="title">Coffee Shop</h1>
-    <OrderEdit />
+    <!-- <OrderEdit /> -->
     <div class="order-list">
-      <Order />
-      <Order />
-      <Order />
-      <Order />
-      <Order />
-      <Order />
-      <Order />
-      <Order />
+      <Order v-for="(order, key) in orderList" :order="order" :id="key" :key="key" />
     </div>
   </main>
 </template>
