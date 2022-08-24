@@ -1,12 +1,12 @@
 <script setup>
 import Order from "./components/Order.vue";
 import OrderEdit from "./components/OrderEdit.vue";
-
 </script>
 
 <template>
   <main>
     <h1 class="title">Coffee Shop</h1>
+    <OrderEdit />
     <div class="order-list">
       <Order />
       <Order />
@@ -16,7 +16,6 @@ import OrderEdit from "./components/OrderEdit.vue";
       <Order />
       <Order />
       <Order />
-      <OrderEdit />
     </div>
   </main>
 </template>

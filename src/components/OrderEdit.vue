@@ -1,38 +1,68 @@
 <template>
-  <div class="item">
-    <div class="idx">#001</div>
-    <div class="content">
-      <div class="row">
-        <div class="row-title">order</div>
-        <input class="row-answer input-style" type="text" name="" id="" value="coffeecoffeecoffeecoffeecoffee" />
+  <div class="order-edit">
+    <div class="card">
+      <img class="icon icon-close" src="../assets/icon/xmark-solid.svg" alt="" />
+      <div class="idx">#001</div>
+      <div class="content">
+        <div class="row">
+          <div class="row-title">order</div>
+          <input class="row-answer input-style" type="text" name="" id="" value="coffeecoffeecoffeecoffeecoffee" />
+        </div>
+        <div class="row">
+          <div class="row-title">size</div>
+          <select class="row-answer input-style" name="" id="">
+            <option value="">-</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="row-title">price</div>
+          <input class="row-answer input-style" type="text" name="" id="" value="60" />
+        </div>
       </div>
-      <div class="row">
-        <div class="row-title">size</div>
-        <select class="row-answer input-style" name="" id="" value="M">
-          <option value="">-</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-        </select>
+      <div class="note">note</div>
+      <textarea class="note-answer" name="" id="" cols="30" rows="2"></textarea>
+      <div class="btn-group">
+        <button>ok</button>
       </div>
-      <div class="row">
-        <div class="row-title">price</div>
-        <input class="row-answer input-style" type="text" name="" id="" value="60" />
-      </div>
-    </div>
-    <div class="note">note</div>
-    <textarea class="note-answer" name="" id="" cols="30" rows="2"></textarea>
-    <div class="btn-group">
-      <button>ok</button>
-      <button>cancel</button>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.item {
-  padding: 10px;
+.order-edit {
+  background-color: #{$color-dark-400}#{55};
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  opacity: 0.3;
+
+  &:hover{
+    opacity: 1;
+  }
+}
+
+.card {
+  position: relative;
+  padding: 20px;
+  background-color: $color-dark-200;
   box-shadow: 0 0 4px $color-dark-300;
+  width: 40%;
+  border-radius: 2px;
 }
 
 .row {
@@ -59,6 +89,7 @@ select.row-answer {
 .note-answer {
   border: 1px solid $color-dark-300;
   width: 100%;
+  padding: 3px;
 }
 
 .input-style {

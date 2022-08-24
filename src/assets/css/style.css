@@ -135,10 +135,15 @@ table {
 input,
 select,
 textarea {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   all: unset;
 }
 
 select {
   appearance: auto;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
 }
