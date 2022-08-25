@@ -5,6 +5,7 @@ const props = defineProps({
   order: Object,
   id: Number,
   deleteOrder: Function,
+  orderEdit: Function,
 });
 </script>
 
@@ -34,7 +35,7 @@ const props = defineProps({
     <div class="note">{{ order.note }}</div>
     <div class="content-bottom">
       <div class="time">{{ order.time }}</div>
-      <button class="edit btn-primary">edit</button>
+      <button class="edit btn-primary hover" @click="orderEdit(id)">edit</button>
     </div>
   </div>
 </template>
@@ -117,7 +118,6 @@ const props = defineProps({
   justify-content: space-between;
   flex-direction: row-reverse;
 }
-
 
 .note,
 .time {

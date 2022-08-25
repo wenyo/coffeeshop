@@ -1,31 +1,68 @@
+<script setup>
+import { defineProps, ref } from "vue";
+import { SIZE } from "../util/Enum";
+
+const props = defineProps({
+  id: Number,
+  close: Function,
+  order: Object,
+  deleteOrder: Function,
+  saveOrder: Function,
+});
+
+let name = ref(props.order?.name);
+let size = ref(props.order?.size ?? "");
+let price = ref(props.order?.price);
+let note = ref(props.order?.note);
+
+const dateGet = () => {
+  const date = new Date();
+  let now = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
+  return now;
+};
+
+function submit() {
+  const orderEdit = {
+    name: name.value,
+    size: size.value,
+    price: price.value,
+    note: note.value,
+    time: dateGet(),
+  };
+
+  props.saveOrder(props.id, orderEdit);
+}
+</script>
+
 <template>
-  <div class="order-edit">
+  <div class="order-edit" @click.self="close">
     <div class="card">
-      <img class="icon icon-close" src="../assets/icon/xmark-solid.svg" alt="" />
-      <div class="idx">#001</div>
+      <div class="icon-close" @click="close">
+        <img class="icon" src="../assets/icon/xmark-solid.svg" alt="" />
+      </div>
+      <div class="idx">#{{ id + 1 }}</div>
       <div class="content">
         <div class="row">
           <div class="row-title">order</div>
-          <input class="row-answer input-style" type="text" name="" id="" value="coffeecoffeecoffeecoffeecoffee" />
+          <input class="row-answer input-style" type="text" name="" id="" v-model="name" />
         </div>
         <div class="row">
           <div class="row-title">size</div>
-          <select class="row-answer input-style" name="" id="">
-            <option value="">-</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
+          <select class="row-answer input-style" name="" id="" v-model="size">
+            <option value="" selected>-</option>
+            <option v-for="(size, key) in SIZE" :value="size" :key="key">{{ size }}</option>
           </select>
         </div>
         <div class="row">
           <div class="row-title">price</div>
-          <input class="row-answer input-style" type="text" name="" id="" value="60" />
+          <input class="row-answer input-style" type="text" name="" id="" v-model="price" />
         </div>
       </div>
       <div class="note">note</div>
-      <textarea class="note-answer" name="" id="" cols="30" rows="2"></textarea>
+      <textarea class="note-answer" name="" id="" cols="30" rows="2" v-model="note"></textarea>
       <div class="btn-group">
-        <button>ok</button>
+        <button class="btn-secondary hover" @click="submit" :disabled="!name || !price">ok</button>
+        <button class="btn-thread hover" v-if="Object.keys(order).length > 0" @click="deleteOrder(id)">dele</button>
       </div>
     </div>
   </div>
@@ -52,7 +89,7 @@
   cursor: pointer;
   opacity: 0.3;
 
-  &:hover{
+  &:hover {
     opacity: 1;
   }
 }
@@ -92,5 +129,15 @@ select.row-answer {
 
 .input-style {
   border-bottom: 1px solid $color-dark-300;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+
+  .btn-secondary {
+    margin-right: 10px;
+  }
 }
 </style>
