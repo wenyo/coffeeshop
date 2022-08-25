@@ -12,7 +12,10 @@ const props = defineProps({
   <div class="card">
     <div class="title">
       <div class="idx">#{{ id + 1 }}</div>
-      <img class="icon icon-close" @click="deleteOrder(id)" src="../assets/icon/xmark-solid.svg" alt="" />
+    </div>
+
+    <div class="icon-close" @click="deleteOrder(id)">
+      <img class="icon" src="../assets/icon/xmark-solid.svg" alt="" />
     </div>
     <div class="content">
       <div class="row">
@@ -29,10 +32,9 @@ const props = defineProps({
       </div>
     </div>
     <div class="note">{{ order.note }}</div>
-
     <div class="content-bottom">
-      <div class="edit">edit</div>
       <div class="time">{{ order.time }}</div>
+      <button class="edit btn-primary">edit</button>
     </div>
   </div>
 </template>
@@ -47,13 +49,16 @@ const props = defineProps({
 
     .icon-close {
       display: inline;
-      opacity: 0.8;
     }
 
     .edit {
       display: inline-block;
     }
   }
+}
+
+.edit {
+  display: none;
 }
 
 .title {
@@ -64,16 +69,32 @@ const props = defineProps({
 
 .icon-close {
   display: none;
-  box-shadow: 0 0 4px $color-dark-400;
-  border: 1px solid $color-dark-900;
-  padding: 2px;
+  opacity: 0.3;
+  position: absolute;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
   border-radius: 99px;
+  transition: all 0.3s;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .idx {
   color: $color-primary-300;
 }
+
 .row {
   margin: 4px 0;
   display: flex;
@@ -94,15 +115,17 @@ const props = defineProps({
   font-size: 12px;
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
 }
+
 
 .note,
 .time {
+  font-size: 12px;
   color: $color-dark-400;
 }
 
 .note {
-  font-size: 12px;
   border-top: 1px solid $color-dark-300;
   padding-top: 10px;
   margin-top: 10px;

@@ -143,11 +143,31 @@ select {
   appearance: auto;
 }
 
-.icon {
-  width: 14px;
-  height: 14px;
+button {
+  background-color: unset;
+  font-weight: 100;
+  padding: 0;
+  border: none;
+  font-size: 12px;
+  line-height: unset;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
+.btn-primary {
+  border-bottom: 1px solid $color-dark-300;
+  color: $color-dark-300;
+
+  &:hover {
+    border-bottom: 1px solid $color-primary-400;
+    color: $color-primary-400;
+  }
+}
+
+.icon {
+  width: 12px;
+  height: 12px;
+}
 
 .card {
   padding: 10px;
