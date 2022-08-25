@@ -33,6 +33,7 @@
 
 <style lang="scss" scoped>
 .order-edit {
+  z-index: 10;
   background-color: #{$color-dark-400}#{55};
   position: fixed;
   top: 0;
@@ -57,12 +58,9 @@
 }
 
 .card {
-  position: relative;
   padding: 20px;
-  background-color: $color-dark-200;
-  box-shadow: 0 0 4px $color-dark-300;
+  position: relative;
   width: 40%;
-  border-radius: 2px;
 }
 
 .row {

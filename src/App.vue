@@ -4,10 +4,14 @@ import Order from "./components/Order.vue";
 import OrderEdit from "./components/OrderEdit.vue";
 import SAMPLE_DATA from "./assets/json/sample.json";
 
-let orderList = ref(SAMPLE_DATA);
+let orderList = ref(SAMPLE_DATA.order_list);
 
 function initialDataGet() {
   return SAMPLE_DATA;
+}
+
+function deleteOrder(id) {
+  orderList.value.splice(id, 1);
 }
 </script>
 
@@ -16,7 +20,7 @@ function initialDataGet() {
     <h1 class="title">Coffee Shop</h1>
     <!-- <OrderEdit /> -->
     <div class="order-list">
-      <Order v-for="(order, key) in orderList" :order="order" :id="key" :key="key" />
+      <Order v-for="(order, key) in orderList" :delete-order="deleteOrder" :order="order" :id="key" :key="key" />
     </div>
   </main>
 </template>
@@ -41,9 +45,9 @@ main {
 
 .order-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
   width: 100%;
 }
 </style>

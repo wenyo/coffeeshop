@@ -147,3 +147,12 @@ select {
   width: 14px;
   height: 14px;
 }
+
+
+.card {
+  padding: 10px;
+  background-color: $color-dark-200;
+  box-shadow: 0 0 4px $color-dark-300;
+  font-size: 14px;
+  border-radius: 2px;
+}
