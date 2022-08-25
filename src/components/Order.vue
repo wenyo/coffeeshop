@@ -25,7 +25,8 @@ const props = defineProps({
       </div>
       <div class="row">
         <div class="row-title">size</div>
-        <div class="row-answer">{{ order.size }}</div>
+        <div class="row-answer" v-if="order.size">{{ order.size }}</div>
+        <div class="row-answer" v-else>-</div>
       </div>
       <div class="row">
         <div class="row-title">price</div>

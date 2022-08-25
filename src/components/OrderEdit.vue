@@ -98,6 +98,7 @@ function submit() {
   padding: 20px;
   position: relative;
   width: 40%;
+  max-width: 300px;
 
   @media (max-width: 768px) {
     width: 60%;
