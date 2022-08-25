@@ -98,6 +98,14 @@ function submit() {
   padding: 20px;
   position: relative;
   width: 40%;
+
+  @media (max-width: 768px) {
+    width: 60%;
+  }
+
+  @media (max-width: 375px) {
+    width: 80%;
+  }
 }
 
 .row {

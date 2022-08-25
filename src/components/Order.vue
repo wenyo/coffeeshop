@@ -60,6 +60,9 @@ const props = defineProps({
 
 .edit {
   display: none;
+  @media (max-width: 768px) {
+    display: inline-block;
+  }
 }
 
 .title {
@@ -89,6 +92,10 @@ const props = defineProps({
 
   &:hover {
     opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    display: inline;
   }
 }
 

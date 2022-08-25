@@ -65,7 +65,7 @@ function orderSaveFromAlert(id, order) {
 <style lang="scss" scoped>
 main {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,9 +85,21 @@ main {
 
 .order-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 20px;
   width: 100%;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 375px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .btn-add {
